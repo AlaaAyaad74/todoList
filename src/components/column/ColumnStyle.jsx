@@ -6,7 +6,7 @@ export default styled.div`
     font-size: 1.1rem;
     color: var(--text-color);
 
-    justify-content: flex-start;
+    justify-content: center;
     width: 100%;
   }
   .Title_column div {
@@ -15,5 +15,10 @@ export default styled.div`
     border-radius: 50%;
     background-color: green;
     margin-inline-end: 10px;
+  }
+  @media (max-width: 810px) {
+    .Title_column {
+      justify-content: flex-start;
+    }
   }
 `;
