@@ -5,7 +5,7 @@ import MODStyle from "./MODStyle";
 function Modal({ showEditModal, setShowEditModal, checkedElement }) {
   const [option, setOption] = useState(checkedElement[0].status);
   const [checkboxes, setCheckboxes] = useState(checkedElement[0].subTasks);
-
+  console.log(checkedElement[0]);
   const handleCheckboxChange = (index) => {
     setCheckboxes((prevState) => {
       const updatedCheckboxes = [...prevState];
@@ -31,10 +31,12 @@ function Modal({ showEditModal, setShowEditModal, checkedElement }) {
 
             <div>
               <label htmlFor="description" style={{ width: "100%" }}>
-                {checkedElement[0].description}
+                {checkedElement[0].describtion}
               </label>
             </div>
-            <label>Subtasks0 of {checkedElement[0].subTasks.length}</label>
+            <label style={{ width: "100%" }}>
+              Subtasks0 of {checkedElement[0].subTasks.length}
+            </label>
             {checkboxes.map((item, index) => (
               <div className="subTasks" key={index}>
                 <div className="checkbox_container Flex_Z">
