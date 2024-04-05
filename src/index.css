@@ -34,7 +34,8 @@ a {
   justify-content: center;
 }
 input,
-textarea {
+textarea,
+button {
   font-family: "Nunito", sans-serif;
   border-radius: 6px;
 }
@@ -55,6 +56,3 @@ textarea {
 }
 
 /* Handle on hover */
-
-.btn-style {
-}
