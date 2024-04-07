@@ -102,4 +102,9 @@ export default styled.div`
     overflow-y: scroll;
     height: 70px;
   }
+  @media (max-width: 810px) {
+    form {
+      width: 90% !important;
+    }
+  }
 `;

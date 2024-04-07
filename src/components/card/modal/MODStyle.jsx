@@ -15,6 +15,7 @@ export default styled.div`
   }
   .checked {
     text-decoration: line-through;
+    color: var(--text-color) !important;
   }
   .subTasks {
     gap: 3px;

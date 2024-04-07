@@ -11,8 +11,8 @@ function HomePage() {
       title: "",
       describtion: "",
       subTasks: [
-        { sub: "", placeHolder: "e.g. Take coffee" },
-        { sub: "", placeHolder: "drinking coffee and smile" },
+        { sub: "", placeHolder: "e.g. Take coffee", checked: false },
+        { sub: "", placeHolder: "drinking coffee and smile", checked: false },
       ],
       status: "",
     },
