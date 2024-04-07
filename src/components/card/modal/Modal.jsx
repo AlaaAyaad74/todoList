@@ -57,34 +57,45 @@ function Modal({
             </h4>
 
             <div>
-              <label htmlFor="description" style={{ width: "100%" }}>
+              <label
+                htmlFor="description"
+                style={{
+                  width: "100%",
+                  maxHeight: "150px",
+                  overflow: "hidden",
+                }}
+              >
                 {checkedElement[0].describtion}
               </label>
             </div>
             <label style={{ width: "100%" }}>
               Subtasks{doneTasks} of {checkedElement[0].subTasks.length}
             </label>
-            {checkedElement[0].subTasks.map((item, index) => (
-              <div className="subTasks" key={index}>
-                <div className="checkbox_container Flex_Z">
-                  <input
-                    id={`${index}label`}
-                    className="Flex_Z check_box"
-                    type="checkbox"
-                    checked={checkboxes[index]}
-                    onChange={() => {
-                      handleChange(index);
-                    }}
-                  />
-                  <label
-                    htmlFor={`${index}label`}
-                    className={`${checkboxes[index] === true ? "checked" : ""}`}
-                  >
-                    {item.sub}
-                  </label>
+            <div style={{ overflowY: "scroll", maxHeight: "300px" }}>
+              {checkedElement[0].subTasks.map((item, index) => (
+                <div className="subTasks" key={index}>
+                  <div className="checkbox_container Flex_Z">
+                    <input
+                      id={`${index}label`}
+                      className="Flex_Z check_box"
+                      type="checkbox"
+                      checked={checkboxes[index]}
+                      onChange={() => {
+                        handleChange(index);
+                      }}
+                    />
+                    <label
+                      htmlFor={`${index}label`}
+                      className={`${
+                        checkboxes[index] === true ? "checked" : ""
+                      }`}
+                    >
+                      {item.sub}
+                    </label>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
 
             <div className="subTasks">
               <label>Status</label>
