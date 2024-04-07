@@ -1,19 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import exitIcon from "../../../assets/xmark-solid.svg";
 import ModalStyle from "../../add new task/AddFormStyle";
 import MODStyle from "./MODStyle";
+import { UserContext } from "../../../pages/HomePage";
 function Modal({
   showEditModal,
   setShowEditModal,
   checkedElement,
   setCountDoneTask,
 }) {
+  /******get data from context****/
+  const UserData = useContext(UserContext);
+  const [savedData, setSavedData] = useState(UserData.enterdData);
+  /********Save Function **********/
+  const save = () => {
+    setSavedData([...savedData]);
+    UserData.setEnterdData((PrevSavedData) => [...PrevSavedData]);
+  };
+  /*************/
   const [option, setOption] = useState(checkedElement[0].status);
   const checkStatus = checkedElement[0].subTasks.map((item) => item.checked);
   const [checkboxes, setCheckboxes] = useState(checkStatus);
   const DoneTasksNum = () => checkboxes.filter((item) => item === true).length;
   const [doneTasks, setDoneTasks] = useState(DoneTasksNum);
-
+  /******Checkox Change******/
   const handleChange = (index) => {
     checkboxes[index] = !checkboxes[index];
     setCheckboxes((checkboxes) => [...checkboxes]);
@@ -22,6 +32,14 @@ function Modal({
     checkedElement[0].subTasks[index].checked =
       !checkedElement[0].subTasks[index].checked;
     setCountDoneTask(DoneTasksNum);
+    save();
+  };
+  /********select Change*******/
+  const handleStatusChange = (e) => {
+    setOption(e.target.value);
+    checkedElement[0].status = e.target.value;
+    setSavedData((checkedElement) => [...checkedElement]);
+    save();
   };
   return (
     <ModalStyle>
@@ -56,7 +74,6 @@ function Modal({
                     checked={checkboxes[index]}
                     onChange={() => {
                       handleChange(index);
-                      console.log(checkboxes[index], index);
                     }}
                   />
                   <label
@@ -71,10 +88,7 @@ function Modal({
 
             <div className="subTasks">
               <label>Status</label>
-              <select
-                value={option}
-                onChange={(e) => setOption(e.target.value)}
-              >
+              <select value={option} onChange={(e) => handleStatusChange(e)}>
                 <option value={"TODO"}>TODO</option>
                 <option value={"DOING"}>DOING</option>
                 <option value={"DONE"}>DONE</option>

@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useRef, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import Header from "../components/header/Header";
 import HomePageStyle from "./HomePageStyle";
 import Column from "./../components/column/Column";

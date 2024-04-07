@@ -11,7 +11,7 @@ function AddForm({ showFormAdd, setShowFormAdd }) {
     let filterdValue = savedData[
       UserData.enterdData.length - 1
     ].subTasks.filter((item) => item !== val);
-    console.log(filterdValue, "filterd value");
+
     savedData[savedData.length - 1].subTasks = [...filterdValue];
     setSavedData([...savedData]);
   }
@@ -39,7 +39,6 @@ function AddForm({ showFormAdd, setShowFormAdd }) {
       status: "",
     });
     UserData.setEnterdData((PrevSavedData) => [...PrevSavedData]);
-    console.log(UserData.enterdData);
   }
   return (
     <AddFormStyle>
@@ -96,8 +95,6 @@ function AddForm({ showFormAdd, setShowFormAdd }) {
               )}
             </div>
 
-            {/* <SubTitelInput placeHolder={"drinking coffee and smile"} /> */}
-
             <button className="Add_New" onClick={(e) => handleAddSubtitle(e)}>
               +Add New Subtask
             </button>
@@ -105,7 +102,7 @@ function AddForm({ showFormAdd, setShowFormAdd }) {
           <div className="subTasks">
             <label>Status</label>
             <select
-              // value={se ?"TODO"}
+              required
               onChange={(e) => {
                 savedData[UserData.enterdData.length - 1].status =
                   e.target.value;

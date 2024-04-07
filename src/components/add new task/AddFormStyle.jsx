@@ -106,5 +106,8 @@ export default styled.div`
     form {
       width: 90% !important;
     }
+    .Modal form textarea {
+      max-width: 100%;
+    }
   }
 `;

@@ -10,7 +10,7 @@ function CardTask({ title, subTasks }) {
   const [countDoneTask, setCountDoneTask] = useState(0);
   const checkedElement = (clickedTitle) => {
     let ele = UserData.enterdData.filter((item) => item.title === clickedTitle);
-    console.log(ele);
+
     return ele;
   };
 
@@ -28,7 +28,8 @@ function CardTask({ title, subTasks }) {
           {title}
         </h3>
         <p className="subTasks">
-          {countDoneTask} of {subTasks.length} Subtasks
+          {subTasks.filter((item) => item.checked === true).length} of{" "}
+          {subTasks.length} Subtasks
         </p>
       </div>
       {showEditModal && (
