@@ -28,17 +28,21 @@ function AddForm({ showFormAdd, setShowFormAdd }) {
   }
   function save(e) {
     e.preventDefault();
-    setSavedData([...savedData]);
-    UserData.enterdData.push({
-      title: "",
-      describtion: "",
-      subTasks: [
-        { sub: "", placeHolder: "e.g. Take coffee" },
-        { sub: "", placeHolder: "drinking coffee and smile" },
-      ],
-      status: "",
-    });
-    UserData.setEnterdData((PrevSavedData) => [...PrevSavedData]);
+    if (savedData[savedData.length - 1].title.trim() === "") {
+      alert("you Must Enter The Title");
+    } else {
+      setSavedData([...savedData]);
+      UserData.enterdData.push({
+        title: "",
+        describtion: "",
+        subTasks: [
+          { sub: "", placeHolder: "e.g. Take coffee" },
+          { sub: "", placeHolder: "drinking coffee and smile" },
+        ],
+        status: "",
+      });
+      UserData.setEnterdData((PrevSavedData) => [...PrevSavedData]);
+    }
   }
   return (
     <AddFormStyle>
@@ -56,6 +60,7 @@ function AddForm({ showFormAdd, setShowFormAdd }) {
           <div>
             <label htmlFor="title">Title</label>
             <input
+              required
               type="text"
               id="title"
               placeholder="e.g. Take coffee breack"
