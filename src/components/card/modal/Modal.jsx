@@ -71,7 +71,9 @@ function Modal({
             <label style={{ width: "100%" }}>
               Subtasks{doneTasks} of {checkedElement[0].subTasks.length}
             </label>
-            <div style={{ overflowY: "scroll", maxHeight: "300px" }}>
+            <div
+              style={{ overflowY: "scroll", maxHeight: "300px", gap: "8px" }}
+            >
               {checkedElement[0].subTasks.map((item, index) => (
                 <div className="subTasks" key={index}>
                   <div className="checkbox_container Flex_Z">
