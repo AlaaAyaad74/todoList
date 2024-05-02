@@ -5,6 +5,8 @@ export default styled.div`
     background-color: var(--secondary-color);
     border-radius: 8px;
     padding: 1.5em 1.1em;
+    width: 90%;
+    margin: auto;
   }
   .card_container .title_Task {
     font-size: 1rem;
